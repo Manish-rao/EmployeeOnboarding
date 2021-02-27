@@ -42,7 +42,7 @@ Sample Json Body:
 ## UpdateEmployee:
 ```
 Request Type: POST
-http://localhost:8080/updateEmployee?newState=IN_CHECK&email=2@123.com
+http://localhost:8080/updateEmployee?newState=IN-CHECK&email=2@123.com
 
 newState: parameter which denotes next state 
 email: parameter which contains a pre-existing email id
