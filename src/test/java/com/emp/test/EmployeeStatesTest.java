@@ -59,7 +59,7 @@ public class EmployeeStatesTest {
 		EmployeeDto empDto = new EmployeeDto();
 		BeanUtils.copyProperties(empDoNew, empDto);
 		mockMvc.perform(post("/updateEmployee")
-				.param("newState", empDto.getEmployeeState().next().get().toString())
+				.param("newState", "IN-CHECK")
 				.param("email",empDto.getEmail())
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(asJsonString(empDto))).andExpect(status().isOk());
