@@ -1,22 +1,20 @@
 package com.emp.controller;
 
-import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.emp.dto.EmployeeDto;
-import com.emp.entity.EmployeeDO;
 import com.emp.exception.IllegalStateMachineException;
 import com.emp.service.EmployeeService;
+import com.emp.statemachine.EmployeeState;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -29,6 +27,8 @@ public class EmployeeController {
 
 	@Autowired
 	private EmployeeService employeeService;
+	
+	private static final String inCheck = "IN-CHECK";
 	
 	@Operation(summary = "Add new employee")
 	@ApiResponses(value = { 
@@ -56,6 +56,11 @@ public class EmployeeController {
 			    content = @Content)})
 	@PostMapping("/updateEmployee")
 	public EmployeeDto updateEmployeeState(@RequestParam String newState, @RequestParam String email) throws IllegalStateMachineException {
+		if(EmployeeState.IN_CHECK.toString().equals(newState))
+			throw new IllegalStateMachineException("IN_CHECK is an invalid state, please try with IN-CHECK");
+		if(inCheck.equals(newState)) {
+			newState = EmployeeState.IN_CHECK.toString();
+		}
 		return employeeService.validateAndUpdateEmployee(email, newState);
 	}
 	
