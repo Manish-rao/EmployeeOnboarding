@@ -35,7 +35,7 @@ Sample Json Body:
     "userName": "Test",
     "phoneNumber": 9139393333,
     "address":"Test Address",
-    "age":null
+    "age":20
 }
 ```
 
@@ -43,6 +43,16 @@ Sample Json Body:
 ```
 Request Type: POST
 http://localhost:8080/updateEmployee?newState=IN-CHECK&email=2@123.com
+
+Response:
+{
+    "email": "2@123.com",
+    "userName": "Test",
+    "phoneNumber": 9139393333,
+    "address": "Test Address",
+    "age": 20,
+    "employeeState": "IN_CHECK"
+}
 
 newState: parameter which denotes next state 
 email: parameter which contains a pre-existing email id
