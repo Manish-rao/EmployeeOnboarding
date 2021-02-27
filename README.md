@@ -21,13 +21,13 @@ Installed:
 `  docker run -p 8080:8080 -it --rm empapp  `
 
 ## Verfication:
-` curl http://localhost:8081//swagger-ui-custom.html `
+` curl http:/localhost:8080/swagger-ui-custom.html `
 
 # Endpoints:
 ## AddEmployee:
 ```
 Request Type: POST
-http://localhost:8081/addEmployee
+http://localhost:8080/addEmployee
 
 Sample Json Body:
 {
@@ -42,14 +42,14 @@ Sample Json Body:
 ## UpdateEmployee:
 ```
 Request Type: POST
-http://localhost:8081/updateEmployee?newState=IN_CHECK&email=2@123.com
+http://localhost:8080/updateEmployee?newState=IN_CHECK&email=2@123.com
 
 newState: parameter which denotes next state 
 email: parameter which contains a pre-existing email id
 ```
 
 ## Swagger UI:
-http://localhost:8081//swagger-ui-custom.html
+http://localhost:8080//swagger-ui-custom.html
 
 # Assumptions:
 
@@ -63,7 +63,4 @@ http://localhost:8081//swagger-ui-custom.html
 -  Stress testing was not considered due to time constraints. 
 -  Authentication could be considered, one for employee and nother for admin.
 -  Would love to go through the documentation for Spring State machine and understand the flow better. 
-
-
-
 
